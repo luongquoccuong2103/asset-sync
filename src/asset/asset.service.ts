@@ -17,19 +17,17 @@ export class AssetService {
 
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
   async syncAssets() {
+    console.log('Sync assets start:');
     const assets = await this.fetchAssets();
     for (const asset of assets) {
       const location = await this.locationRepository.findOne({
-        where: { id: asset.location_id, status: 'active' },
+        where: { id: asset.location_id, status: 'actived' },
       });
-      const a = await this.locationRepository.find();
-      console.log('location', location);
       if (location && asset.created_at < Date.now()) {
         const existingAsset = await this.assetRepository.findOne({
           where: { id: asset.id },
         });
         if (!existingAsset) {
-          console.log('true', existingAsset);
           await this.assetRepository.save({
             ...asset,
             createdAt: new Date(asset.created_at * 1000),
@@ -39,16 +37,18 @@ export class AssetService {
         }
       }
     }
+    console.log('Sync assets end.');
   }
 
   async fetchAssets(): Promise<any[]> {
     const response = await axios.get(
       'https://669ce22d15704bb0e304842d.mockapi.io/assets',
     );
+
     return response.data;
   }
 
   async findAll(): Promise<Asset[]> {
-    return this.assetRepository.find({ relations: ['location'] });
+    return await this.assetRepository.find();
   }
 }
