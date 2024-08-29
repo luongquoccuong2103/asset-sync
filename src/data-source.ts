@@ -10,6 +10,6 @@ export const AppDataSource = new DataSource({
   password: 'password',
   database: 'assetdb',
   entities: [Asset, Location],
-  migrations: ['src/migrations/*.ts'],
+  migrations: ['dist/migrations/*.js'],
   synchronize: false,
 });
