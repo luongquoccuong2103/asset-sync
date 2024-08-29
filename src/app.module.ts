@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AssetModule } from './asset/asset.module';
-import { Location } from './asset/entities/location.entity';
 import { Asset } from './asset/entities/asset.entity';
+import { Location } from './asset/entities/location.entity';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { Asset } from './asset/entities/asset.entity';
       password: 'password',
       database: 'assetdb',
       synchronize: true,
-      entities: [Location, Asset],
+      entities: [Asset, Location],
     }),
     AssetModule,
   ],
