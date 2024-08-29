@@ -1,4 +1,3 @@
-import { DataSource } from 'typeorm';
 import { Location } from './asset/entities/location.entity';
 import { AppDataSource } from './data-source';
 

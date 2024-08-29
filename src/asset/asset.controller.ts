@@ -10,9 +10,4 @@ export class AssetController {
   sync() {
     return this.assetService.syncAssets();
   }
-
-  @Get()
-  findAll(): Promise<Asset[]> {
-    return this.assetService.findAll();
-  }
 }

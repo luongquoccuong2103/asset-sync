@@ -10,9 +10,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 export class AssetService {
   constructor(
     @InjectRepository(Asset)
-    private readonly assetRepository: Repository<Asset>,
     @InjectRepository(Location)
-    private readonly locationRepository: Repository<Location>,
     private readonly dataSource: DataSource,
   ) {}
 
@@ -74,9 +72,5 @@ export class AssetService {
       console.error('Error fetching assets from API:', error.message);
       return [];
     }
-  }
-
-  async findAll(): Promise<Asset[]> {
-    return this.assetRepository.find({ relations: ['location'] });
   }
 }
