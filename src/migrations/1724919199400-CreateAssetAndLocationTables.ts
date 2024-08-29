@@ -8,6 +8,7 @@ export class CreateAssetAndLocationTables1688284934157
             CREATE TABLE IF NOT EXISTS location (
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
+                organization VARCHAR(255) NOT NULL,
                 status VARCHAR(255) NOT NULL
             );
             
