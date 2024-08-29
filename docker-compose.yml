@@ -23,6 +23,9 @@ services:
       DATABASE_USER: postgres
       DATABASE_PASSWORD: password
       DATABASE_NAME: assetdb
+    volumes:
+      - .:/app
+    command: npm run start:prod
 
 volumes:
   postgres_data:

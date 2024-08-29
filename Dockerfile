@@ -12,5 +12,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-# Lệnh để chạy ứng dụng
 CMD ["npm", "run", "start:prod"]
